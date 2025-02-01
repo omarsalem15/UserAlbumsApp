@@ -6,6 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0780D74E2D4EA84F000DE238 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D74D2D4EA84F000DE238 /* Moya */; };
+		0780D7502D4EA84F000DE238 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D74F2D4EA84F000DE238 /* ReactiveMoya */; };
+		0780D7522D4EA84F000DE238 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D7512D4EA84F000DE238 /* RxMoya */; };
+		0780D7542D4EA8EE000DE238 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D7532D4EA8EE000DE238 /* RxBlocking */; };
+		0780D7582D4EA8EE000DE238 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D7572D4EA8EE000DE238 /* RxCocoa */; settings = {ATTRIBUTES = (Required, ); }; };
+		0780D75C2D4EA8EE000DE238 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D75B2D4EA8EE000DE238 /* RxRelay */; };
+		0780D7602D4EA8EE000DE238 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0780D75F2D4EA8EE000DE238 /* RxSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		07CC9ECD2D4EB42900F3A08C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0780D6D12D4E6B8D000DE238 /* UserAlbumsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserAlbumsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -14,7 +37,7 @@
 		0780D6E32D4E6B8F000DE238 /* Exceptions for "UserAlbumsApp" folder in "UserAlbumsApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				App/Info.plist,
+				Info.plist,
 			);
 			target = 0780D6D02D4E6B8D000DE238 /* UserAlbumsApp */;
 		};
@@ -36,6 +59,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0780D7582D4EA8EE000DE238 /* RxCocoa in Frameworks */,
+				0780D7602D4EA8EE000DE238 /* RxSwift in Frameworks */,
+				0780D7522D4EA84F000DE238 /* RxMoya in Frameworks */,
+				0780D7542D4EA8EE000DE238 /* RxBlocking in Frameworks */,
+				0780D74E2D4EA84F000DE238 /* Moya in Frameworks */,
+				0780D7502D4EA84F000DE238 /* ReactiveMoya in Frameworks */,
+				0780D75C2D4EA8EE000DE238 /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +98,7 @@
 				0780D6CD2D4E6B8D000DE238 /* Sources */,
 				0780D6CE2D4E6B8D000DE238 /* Frameworks */,
 				0780D6CF2D4E6B8D000DE238 /* Resources */,
+				07CC9ECD2D4EB42900F3A08C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -78,6 +109,13 @@
 			);
 			name = UserAlbumsApp;
 			packageProductDependencies = (
+				0780D74D2D4EA84F000DE238 /* Moya */,
+				0780D74F2D4EA84F000DE238 /* ReactiveMoya */,
+				0780D7512D4EA84F000DE238 /* RxMoya */,
+				0780D7532D4EA8EE000DE238 /* RxBlocking */,
+				0780D7572D4EA8EE000DE238 /* RxCocoa */,
+				0780D75B2D4EA8EE000DE238 /* RxRelay */,
+				0780D75F2D4EA8EE000DE238 /* RxSwift */,
 			);
 			productName = UserAlbumsApp;
 			productReference = 0780D6D12D4E6B8D000DE238 /* UserAlbumsApp.app */;
@@ -107,6 +145,10 @@
 			);
 			mainGroup = 0780D6C82D4E6B8D000DE238;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0780D6FD2D4E8863000DE238 /* XCRemoteSwiftPackageReference "Moya" */,
+				0780D6FE2D4E910C000DE238 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0780D6D22D4E6B8D000DE238 /* Products */;
 			projectDirPath = "";
@@ -333,6 +375,63 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0780D6FD2D4E8863000DE238 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		0780D6FE2D4E910C000DE238 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0780D74D2D4EA84F000DE238 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FD2D4E8863000DE238 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		0780D74F2D4EA84F000DE238 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FD2D4E8863000DE238 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		0780D7512D4EA84F000DE238 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FD2D4E8863000DE238 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		0780D7532D4EA8EE000DE238 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FE2D4E910C000DE238 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		0780D7572D4EA8EE000DE238 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FE2D4E910C000DE238 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		0780D75B2D4EA8EE000DE238 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FE2D4E910C000DE238 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		0780D75F2D4EA8EE000DE238 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0780D6FE2D4E910C000DE238 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0780D6C92D4E6B8D000DE238 /* Project object */;
 }

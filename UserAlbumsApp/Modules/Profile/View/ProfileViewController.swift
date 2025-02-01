@@ -6,19 +6,24 @@
 //
 
 import UIKit
+import RxSwift
 
 class ProfileViewController: UIViewController {
+    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var albumsTableView: UITableView!
     
     
+    private let viewModel = ProfileViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupLargeTitle()
-
+        setupBindings()
+        viewModel.fetchUser(userId: 1)
     }
     
     private func setupTableView() {
@@ -34,7 +39,15 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
     }
-
+    
+    private func setupBindings() {
+        viewModel.user
+            .subscribe(onNext: { [weak self] user in
+                self?.usernameLabel.text = user?.name
+                self?.addressLabel.text = user?.address.fullAddress
+            })
+            .disposed(by: disposeBag)
+    }
 
 }
 
