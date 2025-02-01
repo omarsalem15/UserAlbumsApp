@@ -32,4 +32,11 @@ class NetworkManager {
             .filterSuccessfulStatusCodes()
             .map([UserResponse].self)
     }
+    
+    func fetchAlbums(forUserId userId: Int) -> Single<[Album]> {
+        return provider.rx.request(.albums(userId: userId))
+            .filterSuccessfulStatusCodes()
+            .map([Album].self)
+    }
+    
 }
