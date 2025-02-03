@@ -20,10 +20,9 @@ class ProfileViewModel {
     func fetchUser(userId: Int) {
         networkManager.fetchUsers()
             .subscribe(onSuccess: { [weak self] users in
-                if let user = users.first {
+                let user = users[userId-1]
                     let userUIModel = User(from: user)
                     self?.user.accept(userUIModel)
-                }
             })
             .disposed(by: disposeBag)
     }

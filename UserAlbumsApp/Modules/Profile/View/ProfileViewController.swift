@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var albumsTableView: UITableView!
     
-    
+    let randomUserId = 1
     private let viewModel = ProfileViewModel()
     private let disposeBag = DisposeBag()
     
@@ -23,8 +23,8 @@ class ProfileViewController: UIViewController {
         setupTableView()
         setupLargeTitle()
         setupBindings()
-        viewModel.fetchUser(userId: 1)
-        viewModel.fetchAlbums(userId: 1)
+        viewModel.fetchUser(userId: randomUserId)
+        viewModel.fetchAlbums(userId: randomUserId)
     }
     
     private func setupTableView() {
@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
     private func setupLargeTitle() {
         self.title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.largeTitleDisplayMode = .always
     }
     
     private func setupBindings() {
@@ -55,6 +55,11 @@ class ProfileViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    private func navigateToAlbumDetails(album: Album) {
+        let albumDetailsViewController = AlbumDetailsViewController()
+        albumDetailsViewController.albumId = album.id
+        albumDetailsViewController.albumTitle = album.title
+        navigationController?.pushViewController(albumDetailsViewController, animated: true)
     }
 
 }
@@ -71,6 +76,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let album = viewModel.albums.value[indexPath.row]
         cell.albumNameLabel.text = album.title
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let album = viewModel.albums.value[indexPath.row]
+        navigateToAlbumDetails(album: album)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

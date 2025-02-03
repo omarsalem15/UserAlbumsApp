@@ -39,4 +39,9 @@ class NetworkManager {
             .map([Album].self)
     }
     
+    func fetchPhotos(albumId: Int) -> Single<[PhotoResponse]> {
+        return provider.rx.request(.photos(albumId: albumId))
+            .filterSuccessfulStatusCodes()
+            .map([PhotoResponse].self)
+    }
 }

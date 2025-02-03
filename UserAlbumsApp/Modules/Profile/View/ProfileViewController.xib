@@ -58,9 +58,9 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VTS-9c-uej" secondAttribute="trailing" constant="16" id="IMU-Gz-yyi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Xf-kC-mBb" secondAttribute="bottom" id="IR8-vL-SWp"/>
                 <constraint firstItem="VTS-9c-uej" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="KES-iW-2ac"/>
-                <constraint firstItem="6Xf-kC-mBb" firstAttribute="leading" secondItem="VTS-9c-uej" secondAttribute="leading" id="a3I-WC-Jxf"/>
+                <constraint firstItem="VTS-9c-uej" firstAttribute="trailing" secondItem="6Xf-kC-mBb" secondAttribute="trailing" id="MSv-Hp-uqf"/>
+                <constraint firstItem="6Xf-kC-mBb" firstAttribute="leading" secondItem="VTS-9c-uej" secondAttribute="leading" id="SPl-mN-pfu"/>
                 <constraint firstItem="VTS-9c-uej" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="eaJ-lj-0wU"/>
-                <constraint firstItem="6Xf-kC-mBb" firstAttribute="trailing" secondItem="VTS-9c-uej" secondAttribute="trailing" id="m7T-Ne-Oai"/>
                 <constraint firstItem="uBm-1k-uqC" firstAttribute="top" secondItem="VTS-9c-uej" secondAttribute="bottom" constant="20" id="maL-lV-3Ey"/>
             </constraints>
             <point key="canvasLocation" x="43.511450381679388" y="-12.67605633802817"/>
