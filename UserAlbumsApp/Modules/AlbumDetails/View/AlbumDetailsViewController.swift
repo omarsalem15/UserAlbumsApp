@@ -60,6 +60,12 @@ class AlbumDetailsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    private func navigateToPhotoViewer(for photo: Photo) {
+        let photoViewerVC = PhotoViewerViewController()
+        photoViewerVC.configure(with: photo)
+        navigationController?.pushViewController(photoViewerVC, animated: true)
+    }
 }
 
 extension AlbumDetailsViewController: UICollectionViewDelegate,UICollectionViewDataSource {
@@ -91,6 +97,11 @@ extension AlbumDetailsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = viewModel.filteredPhotos.value[indexPath.row]
+        navigateToPhotoViewer(for: photo)
     }
 
 }
