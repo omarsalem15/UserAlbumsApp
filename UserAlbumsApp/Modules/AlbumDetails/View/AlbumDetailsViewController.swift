@@ -15,8 +15,17 @@ class AlbumDetailsViewController: UIViewController {
     
     var albumId: Int = 0
     var albumTitle: String = ""
-    private let viewModel = AlbumDetailsViewModel()
+    private let viewModel: AlbumDetailsViewModelType
     private let disposeBag = DisposeBag()
+    
+    init(viewModel: AlbumDetailsViewModelType = AlbumDetailsViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +55,19 @@ class AlbumDetailsViewController: UIViewController {
     }
     
     private func setupBindings() {
+        
+        viewModel.isLoading
+            .subscribe(onNext: { [weak self] isLoading in
+                isLoading ? self?.showLoadingIndicator() : self?.hideLoadingIndicator()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.error
+            .subscribe(onNext: { [weak self] error in
+                self?.showError(error)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.filteredPhotos
             .subscribe(onNext: { [weak self] _ in
                 self?.photosCollectionView.reloadData()

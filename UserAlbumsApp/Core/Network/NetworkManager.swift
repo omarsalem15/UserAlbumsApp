@@ -9,7 +9,7 @@ import Moya
 import RxSwift
 import RxMoya
 
-class NetworkManager {
+class NetworkManager: NetworkManagerType {
     static let shared = NetworkManager()
     private let provider: MoyaProvider<API>
     

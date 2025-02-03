@@ -15,8 +15,17 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var albumsTableView: UITableView!
     
     let randomUserId = 1
-    private let viewModel = ProfileViewModel()
+    private let viewModel : ProfileViewModelType
     private let disposeBag = DisposeBag()
+    
+    init(viewModel: ProfileViewModelType = ProfileViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +51,19 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupBindings() {
+        
+        viewModel.isLoading
+            .subscribe(onNext: { [weak self] isLoading in
+                isLoading ? self?.showLoadingIndicator() : self?.hideLoadingIndicator()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.error
+            .subscribe(onNext: { [weak self] error in
+                self?.showError(error)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.user
             .subscribe(onNext: { [weak self] user in
                 self?.usernameLabel.text = user?.name
