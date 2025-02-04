@@ -41,10 +41,14 @@ class AlbumDetailsViewModel:AlbumDetailsViewModelType {
     }
     
     func filterPhotos(by query: String) {
-        if query.isEmpty {
+        let trimmedQuery = query.replacingOccurrences(of: " ", with: "").lowercased()
+        
+        if trimmedQuery.isEmpty {
             filteredPhotos.accept(photos.value)
         } else {
-            let filtered = photos.value.filter { $0.title.lowercased().contains(query.lowercased()) }
+            let filtered = photos.value.filter {
+                $0.title.replacingOccurrences(of: " ", with: "").lowercased().contains(trimmedQuery)
+            }
             filteredPhotos.accept(filtered)
         }
     }

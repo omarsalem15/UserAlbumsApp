@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumDetailsViewController" customModule="UserAlbumsApp" customModuleProvider="target">
             <connections>
+                <outlet property="noResultLabel" destination="oAr-38-W87" id="gx7-7J-5Nb"/>
                 <outlet property="photosCollectionView" destination="68F-Uu-ypS" id="YEr-LP-oc6"/>
                 <outlet property="searchBar" destination="3Y0-2a-DhP" id="seG-sb-hvr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,6 +40,12 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAr-38-W87">
+                    <rect key="frame" x="124.66666666666669" y="426.66666666666669" width="144" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" name="ABB0BA"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,14 +54,19 @@
                 <constraint firstItem="3Y0-2a-DhP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="BIQ-yn-ETV"/>
                 <constraint firstItem="3Y0-2a-DhP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="IYE-Ag-bcz"/>
                 <constraint firstItem="68F-Uu-ypS" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="K0k-EQ-NqR"/>
+                <constraint firstItem="oAr-38-W87" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Mxd-wv-kuo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Y0-2a-DhP" secondAttribute="trailing" constant="10" id="VuE-11-hwm"/>
                 <constraint firstItem="68F-Uu-ypS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hhX-oR-Vre"/>
                 <constraint firstAttribute="bottom" secondItem="68F-Uu-ypS" secondAttribute="bottom" id="oQN-51-UId"/>
+                <constraint firstItem="oAr-38-W87" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="wgK-mo-vGP"/>
             </constraints>
             <point key="canvasLocation" x="-37" y="-12"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="ABB0BA">
+            <color red="0.6705882352941176" green="0.69019607843137254" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

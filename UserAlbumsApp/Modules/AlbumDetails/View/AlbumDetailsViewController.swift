@@ -12,6 +12,7 @@ class AlbumDetailsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var photosCollectionView: UICollectionView!
+    @IBOutlet weak var noResultLabel: UILabel!
     
     var albumId: Int = 0
     var albumTitle: String = ""
@@ -41,6 +42,7 @@ class AlbumDetailsViewController: UIViewController {
         photosCollectionView.dataSource = self
         photosCollectionView.register(PhotoCollectionViewCell.nib(), forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         photosCollectionView.showsVerticalScrollIndicator = false
+        noResultLabel.isHidden = true
     }
     
     private func setupSearchBar() {
@@ -78,6 +80,7 @@ class AlbumDetailsViewController: UIViewController {
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] query in
                 self?.viewModel.filterPhotos(by: query)
+                self?.noResultLabel.isHidden = !(self?.viewModel.filteredPhotos.value.isEmpty ?? true)
                 self?.photosCollectionView.reloadData()
             })
             .disposed(by: disposeBag)
