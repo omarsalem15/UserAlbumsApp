@@ -72,6 +72,7 @@ class AlbumDetailsViewController: UIViewController {
         
         viewModel.filteredPhotos
             .subscribe(onNext: { [weak self] _ in
+                self?.noResultLabel.isHidden = !(self?.viewModel.filteredPhotos.value.isEmpty ?? true)
                 self?.photosCollectionView.reloadData()
             })
             .disposed(by: disposeBag)
@@ -80,7 +81,6 @@ class AlbumDetailsViewController: UIViewController {
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] query in
                 self?.viewModel.filterPhotos(by: query)
-                self?.noResultLabel.isHidden = !(self?.viewModel.filteredPhotos.value.isEmpty ?? true)
                 self?.photosCollectionView.reloadData()
             })
             .disposed(by: disposeBag)
